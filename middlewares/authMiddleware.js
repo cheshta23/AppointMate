@@ -15,7 +15,7 @@ module.exports = async (req, res, next) => {
       }
     });
   } catch (error) {
-    console.log(err);
+    console.log(error);
     res.status(401).send({
       message: "Authorization failed",
       success: false,
