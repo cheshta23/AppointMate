@@ -76,7 +76,18 @@ const Profile = () => {
 
   return (
     <Layout>
-      <h1>Manage Profile</h1>
+      <div
+        style={{
+          marginTop: "0px",
+          marginBottom: "0.5em",
+          fontWeight: "500",
+          textShadow: "2px 2px brown",
+          fontSize: "3rem",
+          marginLeft: "10px",
+        }}
+      >
+        Manage Profile
+      </div>
       {doctor && (
         <Form
           layout="vertical"
@@ -88,6 +99,12 @@ const Profile = () => {
               moment(doctor.timings[0], "HH:mm"),
               moment(doctor.timings[1], "HH:mm"),
             ],
+          }}
+          style={{
+            backgroundColor: "white",
+            opacity: " 0.95",
+            borderRadius: "5px",
+            fontFamily: ` 'PT Serif', serif`,
           }}
         >
           <h4>Personal Details:</h4>
@@ -186,7 +203,10 @@ const Profile = () => {
               </Form.Item>
             </Col>
           </Row>
-          <div className="d-flex justify-content-end ">
+          <div
+            className="d-flex justify-content-end "
+            style={{ marginTop: "-30px" }}
+          >
             <button className="btn btn-primary ">Update</button>
           </div>
         </Form>

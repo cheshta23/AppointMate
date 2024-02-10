@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { Tabs, message } from "antd";
@@ -29,6 +29,7 @@ const NotificationPage = () => {
       dispatch(hideLoading());
       if (res.data.success) {
         message.success(res.data.message);
+        window.location.reload();
       } else message.error(res.data.message);
     } catch (error) {
       dispatch(hideLoading());
@@ -38,7 +39,7 @@ const NotificationPage = () => {
   };
 
   //delete notifications
-  const handleDeleteAllRead = async () => {
+  const handleDeleteAllRead = async (e) => {
     try {
       dispatch(showLoading());
       const res = await axios.post(
@@ -53,6 +54,7 @@ const NotificationPage = () => {
       dispatch(hideLoading());
       if (res.data.success) {
         message.success(res.data.message);
+        window.location.reload();
       } else {
         message.error(res.data.message);
       }
@@ -61,54 +63,114 @@ const NotificationPage = () => {
       message.error("Something Went Wrong In Notifications");
     }
   };
-
   return (
     <Layout>
-      <h4>Notification Page</h4>
-      <Tabs>
-        <Tabs.TabPane tab="unRead" key={0}>
-          <div className="d-flex justify-content-end">
-            <h4
-              className="p-2 text-primary"
-              style={{ cursor: "pointer" }}
-              onClick={handleMarkAllRead}
+      <div
+        style={{
+          marginTop: "0px",
+          marginBottom: "0.5em",
+          fontWeight: "500",
+          textShadow: "2px 2px brown",
+          fontSize: "3rem",
+          marginLeft: "10px",
+        }}
+      >
+        Notification Page
+      </div>
+      <div
+        style={{
+          margin: "0 20px",
+          background: "white",
+          opacity: "0.75",
+          borderRadius: "5px",
+        }}
+      >
+        <Tabs
+          style={{
+            fontWeight: "700",
+            fontFamily: ` 'PT Serif', serif`,
+          }}
+        >
+          <Tabs.TabPane tab="unRead" key={0} style={{ fontWeight: "600" }}>
+            <div
+              className="d-flex justify-content-end "
+              style={{
+                marginTop: "-26px",
+                marginBottom: "-17px",
+              }}
             >
-              Mark All Read
-            </h4>
-          </div>
-          {user?.notification.map((notifMsg) => (
-            <div className="card" style={{ cursor: "pointer" }}>
               <div
-                className="card-text"
-                onClick={() => navigate(notifMsg.onClickPath)}
+                className="p-2 "
+                style={{
+                  color: "#06068d",
+                  cursor: "pointer",
+                  fontSize: "1.7rem",
+                  marginBottom: "0.5rem",
+                  fontWeight: "900",
+                }}
+                onClick={handleMarkAllRead}
               >
-                {notifMsg.message}
+                Mark All Read
               </div>
             </div>
-          ))}
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="Read" key={1}>
-          <div className="d-flex justify-content-end">
-            <h4
-              className="p-2 text-primary"
-              style={{ cursor: "pointer" }}
-              onClick={handleDeleteAllRead}
-            >
-              Delete All Read
-            </h4>
-          </div>
-          {user?.seennotification.map((notifMsg) => (
-            <div className="card" style={{ cursor: "pointer" }}>
+            {user?.notification.map((notifMsg) => (
               <div
-                className="card-text"
-                onClick={() => navigate(notifMsg.onClickPath)}
+                className="card"
+                style={{
+                  cursor: "pointer",
+                  margin: "10px 0px",
+                  padding: "0px 5px",
+                  border: "2px dashed gray",
+                  fontSize: "large",
+                }}
               >
-                {notifMsg.message}
+                <div
+                  className="card-text"
+                  onClick={() => navigate(notifMsg.onClickPath)}
+                >
+                  {notifMsg.message}
+                </div>
+              </div>
+            ))}
+          </Tabs.TabPane>
+          <Tabs.TabPane tab="Read" key={1}>
+            <div className="d-flex justify-content-end">
+              <div
+                className="p-2 "
+                style={{
+                  color: "#06068d",
+                  cursor: "pointer",
+                  fontSize: "1.7rem",
+                  marginBottom: "0.5rem",
+                  fontWeight: "900",
+                }}
+                onClick={handleDeleteAllRead}
+              >
+                Delete All Read
               </div>
             </div>
-          ))}
-        </Tabs.TabPane>
-      </Tabs>
+            {user?.seennotification.map((notifMsg) => (
+              <div
+                className="card"
+                style={{
+                  cursor: "pointer",
+                  margin: "10px 0px",
+                  padding: "0px 5px",
+                  border: "2px dashed gray",
+                  fontSize: "large",
+                }}
+              >
+                <div
+                  className="card-text"
+                  onClick={() => navigate(notifMsg.onClickPath)}
+                >
+                  {notifMsg.message}
+                </div>
+              </div>
+            ))}
+          </Tabs.TabPane>
+        </Tabs>
+      </div>
     </Layout>
   );
 };

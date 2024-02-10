@@ -31,7 +31,18 @@ const HomePage = () => {
   }, []);
   return (
     <Layout>
-      <h1 className="text-center">Home Page</h1>
+      <div
+        className="text-center"
+        style={{
+          marginTop: "0px",
+          marginBottom: "0.5em",
+          fontWeight: "500",
+          textShadow: "2px 2px brown",
+          fontSize: "3rem",
+        }}
+      >
+        Home Page
+      </div>
       <Row>
         {doctors && doctors.map((doctor) => <DoctorList doctor={doctor} />)}
       </Row>

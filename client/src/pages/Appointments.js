@@ -50,7 +50,7 @@ const Appointments = () => {
       dataIndex: "date",
       render: (text, record) => (
         <span>
-          {moment(record.data).format("DD-MM-YYYY")} &nbsp;
+          {moment(record.date).format("DD-MM-YYYY")} &nbsp;
           {moment(record.time).format("HH:mm")}
         </span>
       ),
@@ -63,8 +63,27 @@ const Appointments = () => {
 
   return (
     <Layout>
-      <h1>Appointment Lists</h1>
-      <Table columns={columns} dataSource={appointments} />
+      <div
+        style={{
+          marginTop: "0px",
+          marginBottom: "0.5em",
+          fontWeight: "500",
+          textShadow: "2px 2px brown",
+          fontSize: "3rem",
+          marginLeft: "10px",
+        }}
+      >
+        Appointments List
+      </div>
+      <Table
+        columns={columns}
+        dataSource={appointments}
+        style={{
+          background: "white",
+          opacity: "0.95",
+          margin: "0px 10px",
+        }}
+      />
     </Layout>
   );
 };

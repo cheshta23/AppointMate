@@ -182,8 +182,10 @@ const getAllDoctorsController = async (req, res) => {
 //BOOK APPOINTMENT
 const bookAppointmentController = async (req, res) => {
   try {
-    req.body.date = moment(req.body.date, "DD-MM-YYYY").toISOString();
-    req.body.time = moment(req.body.time, "HH:mm").toISOString();
+    req.body.date = moment(req.body.date, "YYYY-MM-DD").toISOString();
+    console.log(moment(req.body.date, "YYYY-MM-DD").toISOString());
+    req.body.time = moment(req.body.time, "hh:mm").toISOString();
+    console.log(moment(req.body.time, "hh:mm").toISOString());
     req.body.status = "pending";
     const newAppointment = new appointmentModel(req.body);
     await newAppointment.save();
@@ -216,6 +218,10 @@ const bookingAvailabilityController = async (req, res) => {
       .toISOString();
     const toTime = moment(req.body.time, "HH:mm").add(1, "hours").toISOString();
     const doctorId = req.body.doctorId;
+    // console.log(
+    //   "2024-02-09T05:47:00.000Z" > fromTime &&
+    //     "2024-02-09T05:47:00.000Z" < toTime
+    // );
     const appointments = await appointmentModel.find({
       doctorId,
       date,
@@ -227,7 +233,7 @@ const bookingAvailabilityController = async (req, res) => {
     if (appointments.length > 0) {
       return res.status(200).send({
         message: "Appointments not available at this time",
-        success: true,
+        success: false,
       });
     } else {
       return res.status(200).send({

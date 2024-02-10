@@ -107,7 +107,18 @@ const BookingPage = () => {
   }
   return (
     <Layout>
-      <h3>Booking Page</h3>
+      <div
+        style={{
+          marginTop: "0px",
+          marginBottom: "0.5em",
+          fontWeight: "500",
+          textShadow: "2px 2px brown",
+          fontSize: "3rem",
+          marginLeft: "10px",
+        }}
+      >
+        Booking Page
+      </div>
       <div className="container m-2">
         {doctors && (
           <div>
@@ -121,16 +132,24 @@ const BookingPage = () => {
             <div className="d-flex flex-column w-50">
               <DatePicker
                 className="m-2"
-                format="DD-MM-YYYY"
+                format="YYYY-MM-DD"
                 onChange={(value) => {
-                  setDate(moment(value).format("DD-MM-YYYY"));
+                  // setDate(
+                  //   moment(value.format("YYYY-MM-DD")).format("YYYY-MM-DD")
+                  // );
+                  console.log(moment(value).format("YYYY-MM-DD"));
+                  setDate(
+                    moment(value.format("YYYY-MM-DD")).format("YYYY-MM-DD")
+                  );
                 }}
               />
               <TimePicker
                 className="m-2"
                 format="HH:mm"
                 onChange={(value) => {
-                  setTime(moment(value).format("HH:mm"));
+                  // console.log(moment(value.format("HH:mm"))._i);
+                  console.log(moment(value).format("HH:mm"));
+                  setTime(moment(value.format("HH:mm"))._i);
                 }}
               />
               <button

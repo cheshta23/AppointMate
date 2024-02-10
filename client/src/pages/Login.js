@@ -15,7 +15,7 @@ const Login = () => {
     try {
       dispatch(showLoading());
       const res = await axios.post("/api/v1/user/login", values);
-      window.location.reload();
+      // window.location.reload();
       dispatch(hideLoading());
       if (res.data.success) {
         localStorage.setItem("token", res.data.token);
@@ -45,7 +45,7 @@ const Login = () => {
           <Input type="password" required />
         </Form.Item>
         <Link to="/register" className="m-2">
-          Not a user Register here
+          Not a user? Register here
         </Link>
         <button className="btn btn-primary" type="submit">
           Login

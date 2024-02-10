@@ -7,10 +7,14 @@ const DoctorList = ({ doctor }) => {
     <>
       <div
         className="card m-2"
-        style={{ cursor: "pointer" }}
+        style={{
+          cursor: "pointer",
+          backgroundColor: "#f9f9f9c4",
+          border: "2px #234a63 dashed",
+        }}
         onClick={() => navigate(`/doctor/book-appointment/${doctor._id}`)}
       >
-        <div className="card-header">
+        <div className="card-header" style={{ fontWeight: "700" }}>
           Dr. {doctor.firstName} {doctor.lastName}
         </div>
         <div className="card-body">

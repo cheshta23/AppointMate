@@ -78,13 +78,13 @@ const DoctorAppointments = () => {
             <div className="d-flex">
               <button
                 className="btn btn-success"
-                onClick={() => handleStatus(record, "approved")}
+                onClick={() => handleStatus(record, "Approved")}
               >
                 Approve
               </button>
               <button
                 className="btn btn-danger ms-2"
-                onClick={() => handleStatus(record, "reject")}
+                onClick={() => handleStatus(record, "Rejected")}
               >
                 Reject
               </button>
@@ -97,8 +97,23 @@ const DoctorAppointments = () => {
 
   return (
     <Layout>
-      <h1>Appointment Lists</h1>
-      <Table columns={columns} dataSource={appointments} />
+      <div
+        style={{
+          marginTop: "0px",
+          marginBottom: "0.5em",
+          fontWeight: "500",
+          textShadow: "2px 2px brown",
+          fontSize: "3rem",
+          marginLeft: "10px",
+        }}
+      >
+        Appointments List
+      </div>
+      <Table
+        columns={columns}
+        dataSource={appointments}
+        style={{ opacity: "0.95" }}
+      />
     </Layout>
   );
 };

@@ -2,18 +2,23 @@ import React from "react";
 import "../styles/LayoutStyles.css";
 import { adminMenu, userMenu } from "../Data/data";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Badge, message } from "antd";
+import { initialiseUser } from "../redux/features/userSlice";
 
 const Layout = ({ children }) => {
   const { user } = useSelector((state) => state.user);
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   //logout function
   const handleLogout = () => {
-    localStorage.clear();
+    // localStorage.clear();
+    window.localStorage.clear();
+    dispatch(initialiseUser());
     message.success("Logout Successfully");
+
     navigate("/login");
   };
 
@@ -49,9 +54,10 @@ const Layout = ({ children }) => {
         <div className="layout">
           <div className="sidebar">
             <div className="logo">
+              <i class="fa-regular fa-calendar-check"></i>
               <h6>AppointMate</h6>
-              <hr />
             </div>
+            <hr />
             <div className="menu">
               {SidebarMenu.map((menu) => {
                 const isActive = location.pathname === menu.path;
@@ -79,9 +85,17 @@ const Layout = ({ children }) => {
                     navigate("/notification");
                   }}
                 >
-                  <i className="fa-solid fa-bell"></i>
+                  <i
+                    className="fa-solid fa-bell"
+                    style={{ marginRight: "7px" }}
+                  ></i>
                 </Badge>
-                <Link to="/profile">{user?.name}</Link>
+                <Link
+                  to="/profile"
+                  style={{ margin: "0px 15px", color: "#2974a6" }}
+                >
+                  {user?.name}
+                </Link>
               </div>
             </div>
             <div className="body">{children}</div>
@@ -91,5 +105,4 @@ const Layout = ({ children }) => {
     </>
   );
 };
-
 export default Layout;

@@ -54,8 +54,28 @@ const Users = () => {
 
   return (
     <Layout>
-      <h1 className="text-center m-2">Users List</h1>
-      <Table columns={columns} dataSource={users} />
+      <div
+        style={{
+          marginTop: "0px",
+          marginBottom: "0.5em",
+          fontWeight: "500",
+          textShadow: "2px 2px brown",
+          fontSize: "3rem",
+          marginLeft: "10px",
+          textAlign: "center",
+        }}
+      >
+        Users List
+      </div>
+      <Table
+        columns={columns}
+        dataSource={users}
+        style={{
+          background: "white",
+          opacity: "0.95",
+          margin: "0px 10px",
+        }}
+      />
     </Layout>
   );
 };

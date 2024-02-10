@@ -70,7 +70,7 @@ const Doctors = () => {
       dataIndex: "actions",
       render: (text, record) => (
         <div className="d-flex">
-          {record.status === "pending" ? (
+          {record.status === "pending" || record.status === "rejected" ? (
             <button
               className="btn btn-success"
               onClick={() => handleAccountStatus(record, "approved")}
@@ -78,7 +78,12 @@ const Doctors = () => {
               Approve
             </button>
           ) : (
-            <button className="btn btn-danger">Reject</button>
+            <button
+              className="btn btn-danger"
+              onClick={() => handleAccountStatus(record, "rejected")}
+            >
+              Reject
+            </button>
           )}
         </div>
       ),
@@ -87,8 +92,28 @@ const Doctors = () => {
 
   return (
     <Layout>
-      <h1 className="text-center m-3">All Doctors</h1>
-      <Table columns={columns} dataSource={doctors} />
+      <div
+        style={{
+          marginTop: "0px",
+          marginBottom: "0.5em",
+          fontWeight: "500",
+          textShadow: "2px 2px brown",
+          fontSize: "3rem",
+          marginLeft: "10px",
+          textAlign: "center",
+        }}
+      >
+        All Doctors
+      </div>
+      <Table
+        columns={columns}
+        dataSource={doctors}
+        style={{
+          background: "white",
+          opacity: "0.95",
+          margin: "0px 10px",
+        }}
+      />
     </Layout>
   );
 };
