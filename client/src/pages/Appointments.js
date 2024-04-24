@@ -31,6 +31,7 @@ const Appointments = () => {
       title: "ID",
       dataIndex: "_id",
     },
+
     // {
     //   title: "Name",
     //   dataIndex: "name",

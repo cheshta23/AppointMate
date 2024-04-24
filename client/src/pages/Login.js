@@ -31,26 +31,46 @@ const Login = () => {
     }
   };
   return (
-    <div className="form-container">
-      <Form
-        layout="vertical"
-        onFinish={onfinishHandler}
-        className="register-form"
-      >
-        <h3 className="text-center">Login Form</h3>
-        <Form.Item label="Email" name="email">
-          <Input type="email" required />
-        </Form.Item>
-        <Form.Item label="Password" name="password">
-          <Input type="password" required />
-        </Form.Item>
-        <Link to="/register" className="m-2">
-          Not a user? Register here
-        </Link>
-        <button className="btn btn-primary" type="submit">
-          Login
-        </button>
-      </Form>
+    <div className="home">
+      <div className="main-heading">
+        Welcome to <i>AppointMate</i>
+      </div>
+      <div className="main-content">
+        <div className="left-side">
+          <div className="content-1">
+            Let's look at health in a whole new way!
+          </div>
+          <div className="content-2">
+            <div className="sub-content">
+              Healthcare Solution for a Better Life
+            </div>
+            <div className="sub-content">
+              Find a Doctor and Book an Appointment
+            </div>
+          </div>
+        </div>
+        <div className="form-container">
+          <Form
+            layout="vertical"
+            onFinish={onfinishHandler}
+            className="register-form"
+          >
+            <h3 className="form-heading">Login</h3>
+            <Form.Item label="Email" name="email">
+              <Input type="email" required />
+            </Form.Item>
+            <Form.Item label="Password" name="password">
+              <Input type="password" required />
+            </Form.Item>
+            <Link to="/register" className="m-2" style={{ color: "white" }}>
+              Not a user? Register here
+            </Link>
+            <button className="btn btnclass" type="submit">
+              Login
+            </button>
+          </Form>
+        </div>
+      </div>
     </div>
   );
 };

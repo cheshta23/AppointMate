@@ -1,10 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=PT+Serif&display=swap");
+
+.home {
+  height: 100vh;
+  color: white;
+  background: linear-gradient(to right, #723516, #7e6861) no-repeat 0 0 / cover;
+}
 .form-container {
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 70vh;
 }
 .register-form {
-  border: 1px solid gray;
+  font-family: "PT Serif", serif;
   padding: 30px;
+  color: white;
+}
+.ant-form-item-row {
+  color: white;
+}
+.main-heading {
+  text-align: center;
+  font-size: 50px;
+  padding: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  border-bottom: 2px solid white;
+}
+.main-content {
+  display: flex;
+}
+.left-side {
+  justify-content: center;
+  width: 50%;
+}
+.content-1 {
+  text-align: center;
+  padding: 100px;
+  padding-bottom: 50px;
+  font-size: 30px;
+  font-family: "PT Serif", serif;
+}
+.content-2 {
+  text-align: center;
+  font-size: 20px;
+  font-family: "PT Serif", serif;
+}
+.sub-content {
+  margin: 10px;
+}
+.btnclass {
+  color: white;
+  background: #723516;
+}
+.form-heading {
+  text-align: center;
+  font-size: 30px;
 }
