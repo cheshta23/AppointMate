@@ -54,6 +54,9 @@ const Register = () => {
               className="register-form"
             >
               <h3 className="form-heading">Register</h3>
+              <Form.Item label="Name" name="name">
+                <Input type="text" required />
+              </Form.Item>
               <Form.Item label="Email" name="email">
                 <Input type="email" required />
               </Form.Item>
@@ -61,10 +64,10 @@ const Register = () => {
                 <Input type="password" required />
               </Form.Item>
               <Link to="/login" className="m-2" style={{ color: "white" }}>
-                Not a user? Register here
+                Not a user? Login here
               </Link>
               <button className="btn btnclass" type="submit">
-                Login
+                Register
               </button>
             </Form>
           </div>
